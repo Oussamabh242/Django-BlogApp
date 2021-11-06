@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+<!--qsdfghjkl-->
+{% block content %}
+<!--qsdfghjkl-->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-11">
+      <!-- Blog post-->
+      <!--zertyui-->
+      <!-- Blog post-->
+      <div class="card mb-4" style="box-shadow: 100px">
+        <img class="card-img-top" id="123" src="{{post.imageURL}}" alt="..." />
+        <div class="card-body">
+          <div class="small text-muted">
+            |{{post.created_on}}| <br />
+            |{{post.author}}|
+          </div>
+          <br />
+          <h1 class="card-title h4" id="title">{{post.title}}:</h1>
+          <p class="card-text" id="pc-content">{{post.content|linebreaksbr}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <h2>add a Comment</h2>
+
+  <form action="." method="POST">
+    {% csrf_token %}
+    <b>name:</b><br />{{form.name}} <br />
+    <b>comment:</b><br />{{form.body}}
+    <input type="submit" value="add comment" />
+  </form>
+  <hr />
+  <h3>Comments :</h3>
+  {% if not reviews %}
+  <b>no comments yet</b>
+  {% endif %} {% for review in reviews %}
+  <article>
+    <strong>{{review.name}}|{{review.updated_on}}</strong> <br />
+    <p style="font-size: 25px">{{review.body|linebreaksbr}}</p>
+  </article>
+
+  {% endfor %} {% endblock content %}
+</div>
